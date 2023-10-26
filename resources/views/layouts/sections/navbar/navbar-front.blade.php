@@ -41,9 +41,6 @@
                             href="{{ url('/') }}#landingHero">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fw-medium" aria-current="page" href="{{ url('/') }}#">Profile</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link fw-medium" aria-current="page"
                             href="{{ url('/') }}#landingJurusan">Jurusan</a>
                     </li>
