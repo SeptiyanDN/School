@@ -40,18 +40,16 @@
                         <a class="nav-link fw-medium" aria-current="page"
                             href="{{ url('/') }}#landingHero">Beranda</a>
                     </li>
+                      <li class="nav-item">
+                        <a class="nav-link fw-medium" aria-current="page"
+                            href="{{ url('/') }}#profile-sekolah">Profile Sekolah</a>
+                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link fw-medium" aria-current="page"
                             href="{{ url('/') }}#landingJurusan">Jurusan</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-medium" aria-current="page"
-                            href="{{ url('/') }}#">Ekstrakulikuler</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-medium" aria-current="page"
-                            href="{{ url('/') }}#landingCTANew">Hubungi Kami</a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link fw-medium" aria-current="page"
                             href="{{ url('/') }}#landingReviews">Partner</a>
@@ -59,6 +57,10 @@
                     <li class="nav-item">
                         <a class="nav-link fw-medium" aria-current="page"
                             href="{{ url('/') }}#landingTeam">Pimpinan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium" aria-current="page"
+                            href="{{ url('/') }}#landingCTANew">Hubungi Kami</a>
                     </li>
 
 

@@ -42,7 +42,7 @@
 
 
                                 <p>&mdash; Mengisi formulir daftar ulang. </p>
-                                <p>&mdash; Pengumpulan dokumen di laksanankan di SMKN 1 Kabupaten Tangerang pada tanggal :
+                                <p>&mdash; Pengumpulan dokumen di laksanankan di SMKN 8 Kabupaten Tangerang pada tanggal :
                                     12 &ndash; 14 juli 2023. Dimulai Pukul 08.00 &ndash; 12.00 WIB. </p>
                                 <p>&mdash; Siswa/i hadir kesekolah dengan Pakaian Seragam SMP/MTs lengkap. </p>
                                 <p>&mdash; Siswa/i hadir sesuai jadwal jurusan berikut: Hari/tanggal: Rabu, 12 Juli 2023
@@ -114,7 +114,7 @@
                     <div class="card border rounded shadow-none">
                         <div class="card-body">
                             <div>
-                                <p>Berikut ini adalah informasi bagi calon peserta didik baru SMKN 1 Kabupaten Tangerang
+                                <p>Berikut ini adalah informasi bagi calon peserta didik baru SMKN 8 Kabupaten Tangerang
                                     Tahun Pelajaran 2023/2024 terkait tes potensi akademik:
                                 </p>
 

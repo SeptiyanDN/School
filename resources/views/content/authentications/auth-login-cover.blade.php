@@ -5,7 +5,7 @@ $configData = Helper::appClasses();
 
 @extends('layouts/layoutMaster')
 
-@section('title', 'Login Cover - Pages')
+@section('title', 'Authentication - Login')
 
 @section('vendor-style')
 <!-- Vendor -->
@@ -33,9 +33,10 @@ $configData = Helper::appClasses();
     <!-- /Left Text -->
     <div class="d-none d-lg-flex col-lg-7 p-0">
       <div class="auth-cover-bg auth-cover-bg-color d-flex justify-content-center align-items-center">
-        <img src="{{ asset('assets/img/illustrations/auth-login-illustration-'.$configData['style'].'.png') }}" alt="auth-login-cover" class="img-fluid my-5 auth-illustration" data-app-light-img="illustrations/auth-login-illustration-light.png" data-app-dark-img="illustrations/auth-login-illustration-dark.png">
+        <!-- <img src="{{ asset('assets/img/illustrations/auth-login-illustration-'.$configData['style'].'.png') }}" alt="auth-login-cover" class="img-fluid my-5 auth-illustration" data-app-light-img="illustrations/auth-login-illustration-light.png" data-app-dark-img="illustrations/auth-login-illustration-dark.png"> -->
+                        <img src="{{ asset('assets/img/avatars/guru') }}" alt="faq boy with logos" class="faq-image" />
 
-        <img src="{{ asset('assets/img/illustrations/bg-shape-image-'.$configData['style'].'.png') }}" alt="auth-login-cover" class="platform-bg" data-app-light-img="illustrations/bg-shape-image-light.png" data-app-dark-img="illustrations/bg-shape-image-dark.png">
+        <!-- <img src="{{ asset('assets/img/illustrations/bg-shape-image-'.$configData['style'].'.png') }}" alt="auth-login-cover" class="platform-bg" data-app-light-img="illustrations/bg-shape-image-light.png" data-app-dark-img="illustrations/bg-shape-image-dark.png"> -->
       </div>
     </div>
     <!-- /Left Text -->
@@ -55,13 +56,13 @@ $configData = Helper::appClasses();
 
         <form id="formAuthentication" class="mb-3" action="{{url('/')}}" method="GET">
           <div class="mb-3">
-            <label for="email" class="form-label">Email or Username</label>
-            <input type="text" class="form-control" id="email" name="email-username" placeholder="Enter your email or username" autofocus>
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" autofocus>
           </div>
           <div class="mb-3 form-password-toggle">
             <div class="d-flex justify-content-between">
               <label class="form-label" for="password">Password</label>
-              <a href="{{url('auth/forgot-password-cover')}}">
+              <a href="{{url('auth/forgot-password')}}">
                 <small>Forgot Password?</small>
               </a>
             </div>
@@ -83,30 +84,7 @@ $configData = Helper::appClasses();
           </button>
         </form>
 
-        <p class="text-center">
-          <span>New on our platform?</span>
-          <a href="{{url('auth/register-cover')}}">
-            <span>Create an account</span>
-          </a>
-        </p>
 
-        <div class="divider my-4">
-          <div class="divider-text">or</div>
-        </div>
-
-        <div class="d-flex justify-content-center">
-          <a href="javascript:;" class="btn btn-icon btn-label-facebook me-3">
-            <i class="tf-icons fa-brands fa-facebook-f fs-5"></i>
-          </a>
-
-          <a href="javascript:;" class="btn btn-icon btn-label-google-plus me-3">
-            <i class="tf-icons fa-brands fa-google fs-5"></i>
-          </a>
-
-          <a href="javascript:;" class="btn btn-icon btn-label-twitter">
-            <i class="tf-icons fa-brands fa-twitter fs-5"></i>
-          </a>
-        </div>
       </div>
     </div>
     <!-- /Login -->

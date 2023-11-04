@@ -34,9 +34,8 @@ $configData = Helper::appClasses();
     <!-- /Left Text -->
     <div class="d-none d-lg-flex col-lg-7 p-0">
       <div class="auth-cover-bg auth-cover-bg-color d-flex justify-content-center align-items-center">
-        <img src="{{ asset('assets/img/illustrations/auth-forgot-password-illustration-'.$configData['style'].'.png') }}" alt="auth-forgot-password-cover" class="img-fluid my-5 auth-illustration" data-app-light-img="illustrations/auth-forgot-password-illustration-light.png" data-app-dark-img="illustrations/auth-forgot-password-illustration-dark.png">
+                        <img src="{{ asset('assets/img/avatars/guru') }}" alt="faq boy with logos" class="faq-image" />
 
-        <img src="{{ asset('assets/img/illustrations/bg-shape-image-'.$configData['style'].'.png') }}" alt="auth-forgot-password-cover" class="platform-bg" data-app-light-img="illustrations/bg-shape-image-light.png" data-app-dark-img="illustrations/bg-shape-image-dark.png">
       </div>
     </div>
     <!-- /Left Text -->
@@ -61,7 +60,7 @@ $configData = Helper::appClasses();
           <button class="btn btn-primary d-grid w-100">Send Reset Link</button>
         </form>
         <div class="text-center">
-          <a href="{{url('auth/login-cover')}}" class="d-flex align-items-center justify-content-center">
+          <a href="{{url('auth/login')}}" class="d-flex align-items-center justify-content-center">
             <i class="ti ti-chevron-left scaleX-n1-rtl"></i>
             Back to login
           </a>

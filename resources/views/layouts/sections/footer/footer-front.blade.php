@@ -6,7 +6,7 @@
         <div class="col-lg-5">
           <a href="{{url('front-pages/landing')}}" class="app-brand-link mb-4">
             <span class="app-brand-logo demo">@include('_partials.macros',['height'=>20,'withbg' => "fill: #fff;"])</span>
-            <span class="app-brand-text demo footer-link fw-bold ms-2 ps-1">SMK Negeri 8 Kabupaten Tangerang</span>
+            <span class="app-brand-text demo footer-link fw-bold ms-2 ps-1">SMK Negeri 8 Kab. Tangerang</span>
           </a>
           <p class="footer-text footer-logo-description mb-4">
             Jl. Sarwani No.10, Tipar Raya, Kec. Jambe, Kabupaten Tangerang, Banten 15720<br>
@@ -33,7 +33,7 @@
               <a href="/demo-2" target="_blank" class="footer-link">eRapor SMKN 8</a>
             </li>
             <li class="mb-3">
-              <a href="/demo-3" target="_blank" class="footer-link">SKL SMKN 1</a>
+              <a href="/demo-3" target="_blank" class="footer-link">SKL SMKN 8</a>
             </li>
           </ul>
         </div>

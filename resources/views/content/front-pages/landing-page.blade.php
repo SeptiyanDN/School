@@ -55,7 +55,7 @@
                                         <a href="/ppdb-info" class="btn btn-primary btn-md-lg btn-sm-sm">PPDB Online
                                             2024</a>
                                     </div>
-                                    <a href="#" class="btn btn-success btn-md-lg btn-sm-sm">Cek Kelulusan</a>
+                                    <a href="{{ url('/comingsoon/') }}" class="btn btn-success btn-md-lg btn-sm-sm">Cek Kelulusan</a>
                                 </div>
                             </div>
                         </div>
@@ -552,13 +552,13 @@
         <!-- FAQ: End -->
 
         <!-- CTA: Start -->
-        <section id="landingCTA" class="section-py landing-cta p-lg-0 pb-0">
+        <section id="profile-sekolah" class="section-py landing-cta p-lg-0 pb-0">
             <div class="container">
                 <div class="row align-items-center gy-5 gy-lg-0">
                     <div class="col-lg-6 text-center text-lg-start">
                         <h6 class="h2 text-primary fw-bold mb-1">Ingin Mengenal lebih Lanjut?</h6>
                         <p class="fw-medium mb-4">Lihat Secara Lengkap Tentang SMK Negeri 8 Kab. Tangerang</p>
-                        <a href="{{ url('/front-pages/payment') }}" class="btn btn-lg btn-primary">Profile Sekolah</a>
+                        <a href="{{ url('/comingsoon/') }}" class="btn btn-lg btn-primary">Profile Sekolah</a>
                     </div>
                     <div class="col-lg-6 pt-lg-5 text-center text-lg-end">
                         <img src="{{ asset('assets/img/backgrounds/logo.jpg') }}" alt="cta dashboard"
