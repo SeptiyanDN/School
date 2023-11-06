@@ -17,6 +17,7 @@ $configData = Helper::appClasses();
 <link rel="stylesheet" href="{{asset('assets/vendor/css/pages/page-auth.css')}}">
 @endsection
 
+
 @section('vendor-script')
 <script src="{{asset('assets/vendor/libs/@form-validation/umd/bundle/popular.min.js')}}"></script>
 <script src="{{asset('assets/vendor/libs/@form-validation/umd/plugin-bootstrap5/index.min.js')}}"></script>
@@ -33,10 +34,7 @@ $configData = Helper::appClasses();
     <!-- /Left Text -->
     <div class="d-none d-lg-flex col-lg-7 p-0">
       <div class="auth-cover-bg auth-cover-bg-color d-flex justify-content-center align-items-center">
-        <!-- <img src="{{ asset('assets/img/illustrations/auth-login-illustration-'.$configData['style'].'.png') }}" alt="auth-login-cover" class="img-fluid my-5 auth-illustration" data-app-light-img="illustrations/auth-login-illustration-light.png" data-app-dark-img="illustrations/auth-login-illustration-dark.png"> -->
                         <img src="{{ asset('assets/img/avatars/guru') }}" alt="faq boy with logos" class="faq-image" />
-
-        <!-- <img src="{{ asset('assets/img/illustrations/bg-shape-image-'.$configData['style'].'.png') }}" alt="auth-login-cover" class="platform-bg" data-app-light-img="illustrations/bg-shape-image-light.png" data-app-dark-img="illustrations/bg-shape-image-dark.png"> -->
       </div>
     </div>
     <!-- /Left Text -->
@@ -54,10 +52,16 @@ $configData = Helper::appClasses();
         <h3 class=" mb-1">Welcome to {{config('variables.templateName')}}! 👋</h3>
         <p class="mb-4">Please sign-in to your account and start the adventure</p>
 
-        <form id="formAuthentication" class="mb-3" action="{{url('/')}}" method="GET">
+        <form id="formAuthentication" class="mb-3" action="{{url('/auth/login')}}" method="POST">
+          @csrf
           <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" autofocus>
+            @if ($errors->any())
+<script>
+    toastr.error("{{ $errors->first('email') }}");
+</script>
+@endif
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" autofocus>
           </div>
           <div class="mb-3 form-password-toggle">
             <div class="d-flex justify-content-between">
@@ -79,7 +83,7 @@ $configData = Helper::appClasses();
               </label>
             </div>
           </div>
-          <button class="btn btn-primary d-grid w-100">
+          <button type="submit" class="btn btn-primary d-grid w-100">
             Sign in
           </button>
         </form>

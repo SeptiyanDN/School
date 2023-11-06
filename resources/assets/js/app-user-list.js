@@ -19,7 +19,7 @@ $(function () {
   }
 
   // Variable declaration for table
-  var dt_user_table = $('.datatables-users'),
+  var dt_user_table = $('.datatables-userss'),
     select2 = $('.select2'),
     userView = baseUrl + 'app/user/view/account',
     statusObj = {

@@ -132,6 +132,8 @@ use App\Http\Controllers\pages\UserConnections;
 use App\Http\Controllers\pages\UserProfile;
 use App\Http\Controllers\pages\UserProjects;
 use App\Http\Controllers\pages\UserTeams;
+use App\Http\Controllers\seminar\SeminarController;
+use App\Http\Controllers\seminar\SeminarParticipantsController;
 use App\Http\Controllers\tables\Basic as TablesBasic;
 use App\Http\Controllers\tables\DatatableAdvanced;
 use App\Http\Controllers\tables\DatatableBasic;
@@ -161,8 +163,26 @@ use App\Http\Controllers\wizard_example\PropertyListing;
 use Illuminate\Support\Facades\Route;
 
 // Main Page Route
-Route::get('/dashboard', [Analytics::class, 'index'])->name('dashboard-analytics');
-Route::get('/dashboard/analytics', [Analytics::class, 'index'])->name('dashboard-analytics');
+// authentication
+Route::get('/auth/login', [LoginCover::class, 'index'])->name('auth-login');
+Route::post('/auth/login', [LoginCover::class, 'authenticate']);
+
+Route::get('/registration/seminar', [SeminarParticipantsController::class, 'index'])->name('index-seminar');
+Route::POST('/registration/seminar', [SeminarParticipantsController::class, 'registration_seminar'])->name('submit-seminar');
+
+// Route::post('/auth/register', [LoginCover::class, 'register']);
+Route::get('/auth/forgot-password', [ForgotPasswordCover::class, 'index'])->name('auth-forgot-password');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard/analytics', [Analytics::class, 'index'])->name('dashboard-analytics');
+
+    Route::group(['middleware' => 'role:admin'], function () {
+        Route::get('/dashboard', [Analytics::class, 'index'])->name('dashboard');
+        Route::get('/events', [SeminarController::class, 'index'])->name('events-index');
+    });
+
+});
+
 Route::get('/dashboard/crm', [Crm::class, 'index'])->name('dashboard-crm');
 // locale
 Route::get('lang/{locale}', [LanguageController::class, 'swap']);
@@ -290,10 +310,6 @@ Route::get('/pages/misc-under-maintenance', [MiscUnderMaintenance::class, 'index
 );
 Route::get('/comingsoon', [MiscComingSoon::class, 'index'])->name('pages-misc-comingsoon');
 Route::get('/pages/misc-not-authorized', [MiscNotAuthorized::class, 'index'])->name('pages-misc-not-authorized');
-
-// authentication
-Route::get('/auth/login', [LoginCover::class, 'index'])->name('auth-login');
-Route::get('/auth/forgot-password', [ForgotPasswordCover::class, 'index'])->name('auth-forgot-password');
 
 Route::get('/auth/login-basic', [LoginBasic::class, 'index'])->name('auth-login-basic');
 Route::get('/auth/register-basic', [RegisterBasic::class, 'index'])->name('auth-register-basic');

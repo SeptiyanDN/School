@@ -121,6 +121,7 @@
           <th>Id</th>
           <th>User</th>
           <th>Email</th>
+          <th>Role</th>
           <th>Verified</th>
           <th>Actions</th>
         </tr>

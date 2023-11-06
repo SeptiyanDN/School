@@ -33,7 +33,7 @@ $(function () {
       processing: true,
       serverSide: true,
       ajax: {
-        url: baseUrl + 'user-list'
+        url: baseUrl + 'user-list-anjeng'
       },
       columns: [
         // columns according to JSON
@@ -41,6 +41,7 @@ $(function () {
         { data: 'id' },
         { data: 'name' },
         { data: 'email' },
+        { data: 'role' },
         { data: 'email_verified_at' },
         { data: 'action' }
       ],
@@ -110,8 +111,17 @@ $(function () {
           }
         },
         {
-          // email verify
+          // User email
           targets: 4,
+          render: function (data, type, full, meta) {
+            var $role = full['role'];
+
+            return '<span class="user-role">' + $role + '</span>';
+          }
+        },
+        {
+          // email verify
+          targets: 5,
           className: 'text-center',
           render: function (data, type, full, meta) {
             var $verified = full['email_verified_at'];
@@ -165,137 +175,7 @@ $(function () {
         {
           extend: 'collection',
           className: 'btn btn-label-primary dropdown-toggle mx-3',
-          text: '<i class="ti ti-logout rotate-n90 me-2"></i>Export',
-          buttons: [
-            {
-              extend: 'print',
-              title: 'Users',
-              text: '<i class="ti ti-printer me-2" ></i>Print',
-              className: 'dropdown-item',
-              exportOptions: {
-                columns: [2, 3],
-                // prevent avatar to be print
-                format: {
-                  body: function (inner, coldex, rowdex) {
-                    if (inner.length <= 0) return inner;
-                    var el = $.parseHTML(inner);
-                    var result = '';
-                    $.each(el, function (index, item) {
-                      if (item.classList !== undefined && item.classList.contains('user-name')) {
-                        result = result + item.lastChild.textContent;
-                      } else result = result + item.innerText;
-                    });
-                    return result;
-                  }
-                }
-              },
-              customize: function (win) {
-                //customize print view for dark
-                $(win.document.body)
-                  .css('color', config.colors.headingColor)
-                  .css('border-color', config.colors.borderColor)
-                  .css('background-color', config.colors.body);
-                $(win.document.body)
-                  .find('table')
-                  .addClass('compact')
-                  .css('color', 'inherit')
-                  .css('border-color', 'inherit')
-                  .css('background-color', 'inherit');
-              }
-            },
-            {
-              extend: 'csv',
-              title: 'Users',
-              text: '<i class="ti ti-file-text me-2" ></i>Csv',
-              className: 'dropdown-item',
-              exportOptions: {
-                columns: [2, 3],
-                // prevent avatar to be print
-                format: {
-                  body: function (inner, coldex, rowdex) {
-                    if (inner.length <= 0) return inner;
-                    var el = $.parseHTML(inner);
-                    var result = '';
-                    $.each(el, function (index, item) {
-                      if (item.classList.contains('user-name')) {
-                        result = result + item.lastChild.textContent;
-                      } else result = result + item.innerText;
-                    });
-                    return result;
-                  }
-                }
-              }
-            },
-            {
-              extend: 'excel',
-              title: 'Users',
-              text: '<i class="ti ti-file-spreadsheet me-2"></i>Excel',
-              className: 'dropdown-item',
-              exportOptions: {
-                columns: [2, 3],
-                // prevent avatar to be display
-                format: {
-                  body: function (inner, coldex, rowdex) {
-                    if (inner.length <= 0) return inner;
-                    var el = $.parseHTML(inner);
-                    var result = '';
-                    $.each(el, function (index, item) {
-                      if (item.classList.contains('user-name')) {
-                        result = result + item.lastChild.textContent;
-                      } else result = result + item.innerText;
-                    });
-                    return result;
-                  }
-                }
-              }
-            },
-            {
-              extend: 'pdf',
-              title: 'Users',
-              text: '<i class="ti ti-file-text me-2"></i>Pdf',
-              className: 'dropdown-item',
-              exportOptions: {
-                columns: [2, 3],
-                // prevent avatar to be display
-                format: {
-                  body: function (inner, coldex, rowdex) {
-                    if (inner.length <= 0) return inner;
-                    var el = $.parseHTML(inner);
-                    var result = '';
-                    $.each(el, function (index, item) {
-                      if (item.classList.contains('user-name')) {
-                        result = result + item.lastChild.textContent;
-                      } else result = result + item.innerText;
-                    });
-                    return result;
-                  }
-                }
-              }
-            },
-            {
-              extend: 'copy',
-              title: 'Users',
-              text: '<i class="ti ti-copy me-1" ></i>Copy',
-              className: 'dropdown-item',
-              exportOptions: {
-                columns: [2, 3],
-                // prevent avatar to be copy
-                format: {
-                  body: function (inner, coldex, rowdex) {
-                    if (inner.length <= 0) return inner;
-                    var el = $.parseHTML(inner);
-                    var result = '';
-                    $.each(el, function (index, item) {
-                      if (item.classList.contains('user-name')) {
-                        result = result + item.lastChild.textContent;
-                      } else result = result + item.innerText;
-                    });
-                    return result;
-                  }
-                }
-              }
-            }
-          ]
+          text: '<i class="ti ti-logout rotate-n90 me-2"></i>Export'
         },
         {
           text: '<i class="ti ti-plus me-0 me-sm-1"></i><span class="d-none d-sm-inline-block">Add New User</span>',
@@ -342,84 +222,84 @@ $(function () {
     });
   }
 
-  // Delete Record
-  $(document).on('click', '.delete-record', function () {
-    var user_id = $(this).data('id'),
-      dtrModal = $('.dtr-bs-modal.show');
+  // // Delete Record
+  // $(document).on('click', '.delete-record', function () {
+  //   var user_id = $(this).data('id'),
+  //     dtrModal = $('.dtr-bs-modal.show');
 
-    // hide responsive modal in small screen
-    if (dtrModal.length) {
-      dtrModal.modal('hide');
-    }
+  //   // hide responsive modal in small screen
+  //   if (dtrModal.length) {
+  //     dtrModal.modal('hide');
+  //   }
 
-    // sweetalert for confirmation of delete
-    Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-      customClass: {
-        confirmButton: 'btn btn-primary me-3',
-        cancelButton: 'btn btn-label-secondary'
-      },
-      buttonsStyling: false
-    }).then(function (result) {
-      if (result.value) {
-        // delete the data
-        $.ajax({
-          type: 'DELETE',
-          url: `${baseUrl}user-list/${user_id}`,
-          success: function () {
-            dt_user.draw();
-          },
-          error: function (error) {
-            console.log(error);
-          }
-        });
+  //   // sweetalert for confirmation of delete
+  //   Swal.fire({
+  //     title: 'Are you sure?',
+  //     text: "You won't be able to revert this!",
+  //     icon: 'warning',
+  //     showCancelButton: true,
+  //     confirmButtonText: 'Yes, delete it!',
+  //     customClass: {
+  //       confirmButton: 'btn btn-primary me-3',
+  //       cancelButton: 'btn btn-label-secondary'
+  //     },
+  //     buttonsStyling: false
+  //   }).then(function (result) {
+  //     if (result.value) {
+  //       // delete the data
+  //       $.ajax({
+  //         type: 'DELETE',
+  //         url: `${baseUrl}user-list/${user_id}`,
+  //         success: function () {
+  //           dt_user.draw();
+  //         },
+  //         error: function (error) {
+  //           console.log(error);
+  //         }
+  //       });
 
-        // success sweetalert
-        Swal.fire({
-          icon: 'success',
-          title: 'Deleted!',
-          text: 'The user has been deleted!',
-          customClass: {
-            confirmButton: 'btn btn-success'
-          }
-        });
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire({
-          title: 'Cancelled',
-          text: 'The User is not deleted!',
-          icon: 'error',
-          customClass: {
-            confirmButton: 'btn btn-success'
-          }
-        });
-      }
-    });
-  });
+  //       // success sweetalert
+  //       Swal.fire({
+  //         icon: 'success',
+  //         title: 'Deleted!',
+  //         text: 'The user has been deleted!',
+  //         customClass: {
+  //           confirmButton: 'btn btn-success'
+  //         }
+  //       });
+  //     } else if (result.dismiss === Swal.DismissReason.cancel) {
+  //       Swal.fire({
+  //         title: 'Cancelled',
+  //         text: 'The User is not deleted!',
+  //         icon: 'error',
+  //         customClass: {
+  //           confirmButton: 'btn btn-success'
+  //         }
+  //       });
+  //     }
+  //   });
+  // });
 
-  // edit record
-  $(document).on('click', '.edit-record', function () {
-    var user_id = $(this).data('id'),
-      dtrModal = $('.dtr-bs-modal.show');
+  // // edit record
+  // $(document).on('click', '.edit-record', function () {
+  //   var user_id = $(this).data('id'),
+  //     dtrModal = $('.dtr-bs-modal.show');
 
-    // hide responsive modal in small screen
-    if (dtrModal.length) {
-      dtrModal.modal('hide');
-    }
+  //   // hide responsive modal in small screen
+  //   if (dtrModal.length) {
+  //     dtrModal.modal('hide');
+  //   }
 
-    // changing the title of offcanvas
-    $('#offcanvasAddUserLabel').html('Edit User');
+  //   // changing the title of offcanvas
+  //   $('#offcanvasAddUserLabel').html('Edit User');
 
-    // get data
-    $.get(`${baseUrl}user-list\/${user_id}\/edit`, function (data) {
-      $('#user_id').val(data.id);
-      $('#add-user-fullname').val(data.name);
-      $('#add-user-email').val(data.email);
-    });
-  });
+  //   // get data
+  //   $.get(`${baseUrl}user-list\/${user_id}\/edit`, function (data) {
+  //     $('#user_id').val(data.id);
+  //     $('#add-user-fullname').val(data.name);
+  //     $('#add-user-email').val(data.email);
+  //   });
+  // });
 
   // changing the title
   $('.add-new').on('click', function () {
