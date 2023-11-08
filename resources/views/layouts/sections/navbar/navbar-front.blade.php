@@ -99,6 +99,10 @@
                     <!-- / Style Switcher-->
                 @endif
                 <!-- navbar button: Start -->
+                <li class="me-2">
+                    <a href="{{ url('/registration/seminar') }}" class="btn btn-warning"><span
+                            class="d-none d-md-block">Daftar Seminar</span></a>
+                </li>
                 <li>
                     <a href="{{ url('/auth/login') }}" class="btn btn-primary"><span
                             class="tf-icons ti ti-login scaleX-n1-rtl me-md-1"></span><span

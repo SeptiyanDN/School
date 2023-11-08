@@ -143,7 +143,19 @@
       "url": "events",
       "name": "Events",
       "icon": "menu-icon tf-icons ti ti-calendar",
-      "slug": "events"
+      "slug": "events",
+      "submenu": [
+        {
+          "url": "events",
+          "name": "Events List",
+          "slug": "events"
+        },
+        {
+          "url": "laravel/user-management",
+          "name": "Events Participans",
+          "slug": "events-participants"
+        }
+      ]
     },
     {
       "menuHeader": "Apps & Pages"

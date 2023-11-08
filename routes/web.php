@@ -175,7 +175,6 @@ Route::get('/auth/forgot-password', [ForgotPasswordCover::class, 'index'])->name
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/analytics', [Analytics::class, 'index'])->name('dashboard-analytics');
-
     Route::group(['middleware' => 'role:admin'], function () {
         Route::get('/dashboard', [Analytics::class, 'index'])->name('dashboard');
         Route::get('/events', [SeminarController::class, 'index'])->name('events-index');
